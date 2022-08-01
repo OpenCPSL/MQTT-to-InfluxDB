@@ -27,3 +27,13 @@ The configuration is stored in `config.json`.  An overview of the settings is be
 |"InfluxDB_port": "8086",|                Port of InfluxDB. |
 |"InfluxDB_database": "MySensors",|       InfluxDB Database Name. |
 |"storeChangesOnly": true|                Only write to database when values have changed. |
+
+Sometimes it is desirable to change the names of sensors before they are written to the database.  This is useful if sensors have been replace, or have been relocated.  To do this, add lines to `stationNames.json`, in the format of:
+
+`"originalName": "newName"`
+
+Where `originalName` is the name incoming from the MQTT Broker, and `newName` is the name which will be written to InfluxDB (measurement name).
+
+## Notes
+
+Note that it is not possible to change the format of a measurement name in InfluxDB once the measurement name has been created.  For example, is a sensor which only reports temperate has been written to a measurement named `TempA`, and the sensor is replaced with one that measures temperature and humidity, InfluxDB will not accept the new values into the `TempA` measurement.  A new measurement name will need to be used.
