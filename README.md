@@ -11,3 +11,19 @@ New data from the MQTT client callback is added to a queue, 'q'.  The 'influxDB_
 
 Several functions have been found on or were inspired by:
 http://www.steves-internet-guide.com/into-mqtt-python-client/
+
+## Configuration
+
+The configuration is stored in `config.json`.  An overview of the settings is below.
+| Setting | Description |
+| --- | --- |
+|"MQTT_broker": "127.0.0.1",|             IP Address of MQTT Broker |
+|"MQTT_port": 1883,|                      Port of MQTT Broker |
+|"MQTT_topics": [["zigbee2mqtt/#",0]],|   MQTT topic to which this programme will subscribe |
+|"MQTT_username": "",|                    MQTT Broker Username |
+|"MQTT_password": "",|                    MQTT Broker Password |
+|"MQTT_cname": "",|                       MQTT Client Name (i.e. this programme's name as far as broker is concerned) |
+|"InfluxDB_host": "127.0.0.1",|           IP Address of InfluxDB |
+|"InfluxDB_port": "8086",|                Port of InfluxDB |
+|"InfluxDB_database": "MySensors",|       InfluxDB Database Name |
+|"storeChangesOnly": true|                Only write to database when values have changed |
