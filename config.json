@@ -1,0 +1,12 @@
+{
+	"MQTT_broker": "127.0.0.1",
+    "MQTT_port": 1883,
+    "MQTT_topics": [["zigbee2mqtt/#",0]],
+    "MQTT_username": "",
+    "MQTT_password": "",
+    "MQTT_cname": "",
+	"InfluxDB_host": "127.0.0.1",
+	"InfluxDB_port": "8086",
+	"InfluxDB_database": "MySensors",
+	"storeChangesOnly": true
+}
