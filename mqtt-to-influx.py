@@ -240,16 +240,16 @@ if __name__ == "__main__":
     options = loadConfig()
     
     # Fix "topics" to be tuples of the form "(topic, QoS)"
-    for index, topic in enumerate(options["topics"]):
-        options["topics"][index] = tuple(topic)
+    for index, topic in enumerate(options["MQTT_topics"]):
+        options["MQTT_topics"][index] = tuple(topic)
     
     
     # Set up a client name "cname"
-    if not options["cname"]:
+    if not options["MQTT_cname"]:
         r=random.randrange(1,10000)
         cname="logger-"+str(r)
     else:
-        cname="logger-"+str(options["cname"])
+        cname="logger-"+str(options["MQTT_cname"])
     
     logging.info("creating client"+cname)
     
@@ -262,13 +262,13 @@ if __name__ == "__main__":
     #client.on_disconnect    = on_disconnect
     #client.on_subscribe     = on_subscribe
     
-    if options["username"] !="":
-        client.username_pw_set(options["username"], options["password"])
+    if options["MQTT_username"] !="":
+        client.username_pw_set(options["MQTT_username"], options["MQTT_password"])
     
     client.sub_topic    = ""                                # Redundant
-    client.sub_topics   = options["topics"]
-    client.broker       = options["broker"]
-    client.port         = options["port"]
+    client.sub_topics   = options["MQTT_topics"]
+    client.broker       = options["MQTT_broker"]
+    client.port         = options["MQTT_port"]
     
     client.last_message = dict()
     client.q            = q                                 # make queue available as part of client
